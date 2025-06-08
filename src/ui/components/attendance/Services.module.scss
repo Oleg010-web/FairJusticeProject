@@ -1,0 +1,16 @@
+.cardContainer {
+  display: flex;
+  justify-content: center; /* Центрируем элементы */
+  opacity: 0; /* Начальная непрозрачность */
+  transition: opacity 0.5s ease; /* Анимация появления */
+}
+
+.card {
+  transform: translateX(-300%); /* Сдвигаем карточки влево по умолчанию */
+  transition: transform 0.5s ease; /* Анимация сдвига */
+}
+
+.card.visible {
+  opacity: 1; /* Полная непрозрачность, когда элемент видимый */
+  transform: translateX(0%); /* Элемент возвращается в исходное положение */
+}

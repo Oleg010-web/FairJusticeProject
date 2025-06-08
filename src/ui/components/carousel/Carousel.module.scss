@@ -1,0 +1,17 @@
+
+.carousel-image {
+  min-width: 100%; // Каждое изображение занимает 100% ширины контейнера
+  height: 400px; // Высота изображения
+  object-fit: cover; /* Обеспечивает, что изображение заполнит пространство без искажений */
+  border-radius: 10px; /* Скругленные углы для изображений */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Тень для визуального эффекта */
+}
+
+
+.carousel .slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px; /* Высота контейнера слайдера */
+  background-color: #f0f0f0; /* Цвет фона слайда */
+}
