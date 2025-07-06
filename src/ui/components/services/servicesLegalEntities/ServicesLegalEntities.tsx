@@ -108,13 +108,34 @@ export const ServicesLegalEntities = () => {
           Задать вопрос
       </Button>
 
-      <Modal
-          open={openPopup}
-          onClose={handlePopupClose}
-          aria-labelledby="question-form-title"
-          aria-describedby="question-form-description"
+     <Modal
+        open={openPopup}
+        onClose={handlePopupClose}
+        aria-labelledby="question-form-title"
+        aria-describedby="question-form-description"
       >
+        <Box
+          sx={{
+            position: 'absolute' as const,
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            backgroundColor: '#b6d5f4',
+            boxShadow: 24,
+            p: 1,
+            maxWidth: 600,
+            width: '90%',
+            borderRadius: 2,
+            outline: 'none',
+          }}
+        >
           <Form />
+          <Box mt={2} textAlign="right" padding={0}>
+            <Button variant="outlined" onClick={handlePopupClose}>
+              Закрыть
+            </Button>
+          </Box>
+        </Box>
       </Modal>
     </div>
   );

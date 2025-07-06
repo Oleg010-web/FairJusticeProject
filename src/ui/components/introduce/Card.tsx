@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Paper, Typography } from '@mui/material';
 import styles from './Card.module.scss';
 import lawyers1 from '../../../assets/lawyers1.avif';
 import lawyers2 from '../../../assets/lawyers2.jpg';
@@ -37,7 +37,7 @@ export const Card = () => {
   };
 
   return (
-    <Box sx={{ marginTop: '30px' }}>
+    <Box component={Paper} elevation={3} sx={{ padding: 2, marginTop: '10px', backgroundColor: 'transparent', border: 'none', color: '#FAEBD7' }}>
       <Typography variant="h2">Почему мы лучшие</Typography>
       <Box className={styles.cardContainer}>
         {[

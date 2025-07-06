@@ -1,12 +1,11 @@
 import { FormValues } from './../ui/components/form/Form';
-// @ts-ignore
-import Parse from 'parse/dist/parse.min.js';
+import Parse from '../common/parseClient';
 
 // Ваша функция для создания клиента
 export async function createParseClient(data: FormValues) {
   const client = new Parse.Object('Client');
   client.set("name", data.name);
-  client.set("number", data.number.toString());
+  client.set("number", data.number);
   client.set("task", data.task);
     try {
       console.log(data);

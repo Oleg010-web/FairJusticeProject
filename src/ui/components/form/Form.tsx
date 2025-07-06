@@ -44,6 +44,8 @@ export const Form = () => {
       sx={{
         display: 'flex',
         flexDirection: 'column',
+        backgroundColor: '#708090',
+        color: '#FAEBD7',
         gap: '16px',
         maxWidth: '400px',
         margin: 'auto',
@@ -51,7 +53,6 @@ export const Form = () => {
         border: '1px solid #1976d2',
         borderRadius: '8px',
         boxShadow: 3,
-        backgroundColor: 'white',
         marginTop: '50px',
       }}
     >
@@ -66,6 +67,22 @@ export const Form = () => {
         {...register('name', { required: 'Имя обязательно' })}
         error={!!errors.name}
         helperText={errors.name ? errors.name.message : ''}
+        sx={{
+          '& label': { color: 'skyblue' },           // цвет label
+          '& label.Mui-focused': { color: 'skyblue' }, // цвет label при фокусе
+          '& .MuiOutlinedInput-root': {
+            color: '#FAEBD7',                        // цвет текста input
+            '& fieldset': {
+              borderColor: 'skyblue',                // цвет рамки
+            },
+            '&:hover fieldset': {
+              borderColor: '#20b1e1',                // цвет рамки при ховере
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: 'skyblue',                // цвет рамки при фокусе
+            },
+          },
+        }}
       />
 
       <TextField
@@ -76,6 +93,22 @@ export const Form = () => {
         {...register('number', { required: 'Номер обязателен', valueAsNumber: true })}
         error={!!errors.number}
         helperText={errors.number ? errors.number.message : ''}
+                sx={{
+          '& label': { color: 'skyblue' },           // цвет label
+          '& label.Mui-focused': { color: 'skyblue' }, // цвет label при фокусе
+          '& .MuiOutlinedInput-root': {
+            color: '#FAEBD7',                        // цвет текста input
+            '& fieldset': {
+              borderColor: 'skyblue',                // цвет рамки
+            },
+            '&:hover fieldset': {
+              borderColor: '#20b1e1',                // цвет рамки при ховере
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: 'skyblue',                // цвет рамки при фокусе
+            },
+          },
+        }}
       />
 
       <TextField
@@ -87,6 +120,22 @@ export const Form = () => {
         {...register('task', { required: 'Задача обязательна' })}
         error={!!errors.task}
         helperText={errors.task ? errors.task.message : ''}
+                sx={{
+          '& label': { color: 'skyblue' },           // цвет label
+          '& label.Mui-focused': { color: 'skyblue' }, // цвет label при фокусе
+          '& .MuiOutlinedInput-root': {
+            color: '#FAEBD7',                        // цвет текста input
+            '& fieldset': {
+              borderColor: 'skyblue',                // цвет рамки
+            },
+            '&:hover fieldset': {
+              borderColor: '#20b1e1',                // цвет рамки при ховере
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: 'skyblue',                // цвет рамки при фокусе
+            },
+          },
+        }}
       />
 
       <Button

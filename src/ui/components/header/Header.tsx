@@ -14,10 +14,15 @@ import {
   Fade,
   Slide,
 } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = [
+  { label: 'Products', path: '/products' },
+  { label: 'Pricing', path: '/pricing' },
+  { label: 'Blog', path: '/blog' },
+];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export const Header = () => {
@@ -94,8 +99,14 @@ export const Header = () => {
               slots={{ transition: Fade }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu} sx={{ typography: 'body1' }}>
-                  {page}
+                <MenuItem
+                  key={page.label}
+                  component={RouterLink}
+                  to={page.path}
+                  onClick={handleCloseNavMenu}
+                  sx={{ typography: 'body1' }}
+                >
+                  {page.label}
                 </MenuItem>
               ))}
             </Menu>
@@ -131,7 +142,9 @@ export const Header = () => {
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex', alignItems: 'center' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.label}
+                component={RouterLink}
+                to={page.path}
                 onClick={handleCloseNavMenu}
                 sx={{
                   my: 2,
@@ -148,7 +161,7 @@ export const Header = () => {
                   },
                 }}
               >
-                {page}
+                {page.label}
               </Button>
             ))}
 
