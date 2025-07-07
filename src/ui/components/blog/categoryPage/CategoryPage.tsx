@@ -91,6 +91,8 @@ export const CategoryPage: React.FC = () => {
                 p: 2,
                 minHeight: 140,
                 backgroundColor: 'transparent',
+                border: '2px solid',
+                borderColor: '#708090',
                 color: '#FAEBD7'
               }}
             >

@@ -1,0 +1,13 @@
+.biographyWrapper {
+  max-width: 900px;
+  min-height: 700px;
+  border: 2px solid #708090;
+}
+
+.bioText {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  white-space: pre-line; // чтобы переносы из строки сохранялись
+}
+
+/* Можно добавить адаптивные стили, если нужно */

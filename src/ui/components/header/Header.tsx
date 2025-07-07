@@ -21,7 +21,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 const pages = [
   { label: 'Products', path: '/products' },
   { label: 'Pricing', path: '/pricing' },
-  { label: 'Blog', path: '/blog' },
+  { label: 'Юридический блог', path: '/blog' },
 ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 

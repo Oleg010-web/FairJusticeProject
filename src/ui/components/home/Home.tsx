@@ -13,6 +13,12 @@ import { YandexMap } from '../map/Map';
 import { Box, Paper } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../../store/store';
 import { fetchArticles } from '../../../store/slice/fetchArticles';
+import image1 from '../../../assets/image1.jpg';
+import image2 from '../../../assets/image2.jpg';
+import image3 from '../../../assets/image3.jpg';
+import avatar1 from '../../../assets/images/avatar1.jpg';
+import avatar2 from '../../../assets/images/avatar2.jpg';
+import { Biography } from '../biography/Biography';
 
 
 
@@ -20,7 +26,7 @@ import { fetchArticles } from '../../../store/slice/fetchArticles';
 export const HomePage = () => {
   const { success, items, loading } = useAppSelector(state => state.article);
   const dispatch = useAppDispatch();
-  
+
   // useEffect(() => {
   //   Parse.initialize(import.meta.env.VITE_APP_ID, import.meta.env.VITE_APP_JS_KEY);
   //   Parse.serverURL = "https://parseapi.back4app.com";
@@ -30,10 +36,11 @@ export const HomePage = () => {
   return (
     <>
       <Header />
-      <CarouselItem />
+      <CarouselItem images={[image1, image2, image3]} width={'100%'} height={'550px'}/>
       <Card />
       <Services />
-      <Box component={Paper} elevation={3} sx={{ padding: 2, marginTop: '10px', backgroundColor: 'transparent', border: 'none' }}>
+      <Biography images={[avatar1, avatar2]} bioText='Владислав Сергеевич Ивушкин — опытный юрист с более чем 10-летним стажем.Специализируется на гражданском праве и процессе банкротва физических и юридических лиц.Любит помогать людям и решать сложные задачи.' sliderWidth={'350px'} sliderHeight={'350px'} />
+      <Box component={Paper} elevation={3} sx={{ padding: 2, marginTop: '10px', backgroundColor: 'transparent', border: '2px solid', borderColor: '#708090', }}>
         <Form />
       </Box>
       <YandexMap />
