@@ -35,6 +35,7 @@ export const Blog: React.FC = () => {
       dispatch(fetchArticles());
     }
   }, [dispatch, success]);
+  
 
   const categories = useMemo(() => {
     const set = new Set<string>();
