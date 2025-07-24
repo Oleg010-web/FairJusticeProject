@@ -15,6 +15,7 @@ import people from '../../../assets/images/people.png';
 import lawCompanies from '../../../assets/images/lawCompanies.jpg'
 import bankruptcyGeneral from '../../../assets/images/bankruptcyGeneral.png';
 import court from '../../../assets/images/court.png';
+import { PageHeader } from './categoryPage/categoryPageHeader/PageHeader';
 
 export interface Article {
   id: string;
@@ -66,15 +67,8 @@ export const Blog: React.FC = () => {
 
  
   return (
-    <Container maxWidth="md" sx={{ mt: 4 }}>
-      <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-        <Typography variant="h4" gutterBottom>
-          Разделы блога
-        </Typography>
-        <Button variant="contained" onClick={() => navigate('/')}>
-          На главную
-        </Button>
-      </Box>
+    <Container maxWidth="md" sx={{ mt: 4, marginTop: '100px' }}>
+      <PageHeader title='Разделы блога' articlePage={true}/>
 
       <Grid container spacing={2} marginTop={'60px'}>
         {categories.map((c, index: any) => {

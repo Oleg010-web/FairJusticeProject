@@ -3,6 +3,7 @@ import { useNavigate, useParams, Link } from 'react-router-dom';
 import { Container, Typography, Button, Box, Modal } from '@mui/material';
 import { useAppSelector } from '../../../../../store/store';
 import { Form } from '../../../form/Form';
+import { PageHeader } from '../categoryPageHeader/PageHeader';
 
 export const ArticlePage: React.FC = () => {
   const params = useParams();
@@ -46,9 +47,9 @@ export const ArticlePage: React.FC = () => {
   const handleCloseModal = () => setOpenModal(false);
 
   return (
-    <Container maxWidth="md" sx={{ mt: 4, mb: 8 }}>
+    <Container maxWidth="md" sx={{ mt: "100px", mb: 8 }}>
       {/* Навигационные кнопки */}
-      <Box display="flex" gap={2} mb={3} flexWrap="wrap">
+      {/* <Box display="flex" gap={2} mb={3} flexWrap="wrap">
         <Button variant="outlined" onClick={() => navigate(-1)}>
           Назад
         </Button>
@@ -58,7 +59,8 @@ export const ArticlePage: React.FC = () => {
         <Button variant="contained" onClick={handleOpenModal}>
           Задать вопрос юристу
         </Button>
-      </Box>
+      </Box> */}
+      <PageHeader onHandleClick={handleOpenModal} articlePage={true}/>
 
       {/* Заголовок статьи */}
       <Typography variant="h3" component="h1" gutterBottom>

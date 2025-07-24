@@ -1,0 +1,36 @@
+.card {
+  width: 100%; /* или фиксированное значение, например 300px */
+  height: 300px; /* фиксированная высота для всех карточек */
+  border: 2px solid #708090;
+  color: #FAEBD7;
+  background-color: transparent;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-background {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Позволяет фону быть под контентом */
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 16px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: relative; /* Для правильного наложения текста */
+  z-index: 2; /* Контент будет поверх фона */
+}
+
+.readMoreBtn {
+  margin-top: auto; /* Кнопка всегда будет внизу */
+}

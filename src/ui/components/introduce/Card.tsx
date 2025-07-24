@@ -37,7 +37,7 @@ export const Card = () => {
   };
 
   return (
-    <Box component={Paper} elevation={3} sx={{ padding: 2, marginTop: '40px', backgroundColor: '#708090', border: 'none'}}>
+    <Box component={Paper} elevation={3} sx={{ padding: 2, backgroundColor: '#708090', border: 'none'}}>
       <Typography variant="h2">Почему мы лучшие</Typography>
       <Box className={styles.cardContainer}>
         {[
