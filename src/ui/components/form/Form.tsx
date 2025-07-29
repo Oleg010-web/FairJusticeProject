@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
-import { Box, TextField, Button, Typography, CircularProgress, Snackbar } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { Box, TextField, Button, Typography, CircularProgress, Snackbar, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import { resetFormState, submitForm } from '../../../store/slice/formSlice';
 import { RootState, useAppDispatch } from '../../../store/store';
-
+import styles from './Form.module.scss';
 
 export interface FormValues {
   name: string;
@@ -12,8 +13,12 @@ export interface FormValues {
   task: string;
 }
 
-export const Form = () => {
-  const dispatch = useAppDispatch(); // используем типизированный dispatch
+type Props = {
+  handleClose?: () => void
+}
+
+export const Form = ({ handleClose }: Props) => {
+  const dispatch = useAppDispatch();
   const { loading, success, error } = useSelector((state: RootState) => state.form);
 
   const {
@@ -26,6 +31,8 @@ export const Form = () => {
     dispatch(submitForm(data));
   };
 
+
+
   useEffect(() => {
     if (success || error) {
       const timeoutId = setTimeout(() => {
@@ -35,27 +42,23 @@ export const Form = () => {
     }
   }, [success, error, dispatch]);
 
-  console.log(error)
-  console.log(success)
   return (
     <Box
       component="form"
       onSubmit={handleSubmit(onSubmit)}
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        backgroundColor: '#708090',
-        color: '#FAEBD7',
-        gap: '16px',
-        maxWidth: '400px',
-        margin: 'auto',
-        padding: '20px',
-        border: '1px solid #1976d2',
-        borderRadius: '8px',
-        boxShadow: 3,
-        marginTop: '50px',
-      }}
+      className={styles.form}
+      sx={{maxWidth: {xs: '300px', sm: '400px'}}}
     >
+      <Box className={styles.closeButton}>
+        <IconButton
+          aria-label="close form"
+          onClick={handleClose}
+          size="small"
+        >
+          <CloseIcon fontSize="small" />
+        </IconButton>
+      </Box>
+
       <Typography variant="h5" gutterBottom>
         Задайте вопрос юристу
       </Typography>
@@ -67,22 +70,7 @@ export const Form = () => {
         {...register('name', { required: 'Имя обязательно' })}
         error={!!errors.name}
         helperText={errors.name ? errors.name.message : ''}
-        sx={{
-          '& label': { color: 'skyblue' },           // цвет label
-          '& label.Mui-focused': { color: 'skyblue' }, // цвет label при фокусе
-          '& .MuiOutlinedInput-root': {
-            color: '#FAEBD7',                        // цвет текста input
-            '& fieldset': {
-              borderColor: 'skyblue',                // цвет рамки
-            },
-            '&:hover fieldset': {
-              borderColor: '#20b1e1',                // цвет рамки при ховере
-            },
-            '&.Mui-focused fieldset': {
-              borderColor: 'skyblue',                // цвет рамки при фокусе
-            },
-          },
-        }}
+        className={styles.input}
       />
 
       <TextField
@@ -93,22 +81,7 @@ export const Form = () => {
         {...register('number', { required: 'Номер обязателен', valueAsNumber: true })}
         error={!!errors.number}
         helperText={errors.number ? errors.number.message : ''}
-                sx={{
-          '& label': { color: 'skyblue' },           // цвет label
-          '& label.Mui-focused': { color: 'skyblue' }, // цвет label при фокусе
-          '& .MuiOutlinedInput-root': {
-            color: '#FAEBD7',                        // цвет текста input
-            '& fieldset': {
-              borderColor: 'skyblue',                // цвет рамки
-            },
-            '&:hover fieldset': {
-              borderColor: '#20b1e1',                // цвет рамки при ховере
-            },
-            '&.Mui-focused fieldset': {
-              borderColor: 'skyblue',                // цвет рамки при фокусе
-            },
-          },
-        }}
+        className={styles.input}
       />
 
       <TextField
@@ -120,30 +93,15 @@ export const Form = () => {
         {...register('task', { required: 'Задача обязательна' })}
         error={!!errors.task}
         helperText={errors.task ? errors.task.message : ''}
-                sx={{
-          '& label': { color: 'skyblue' },           // цвет label
-          '& label.Mui-focused': { color: 'skyblue' }, // цвет label при фокусе
-          '& .MuiOutlinedInput-root': {
-            color: '#FAEBD7',                        // цвет текста input
-            '& fieldset': {
-              borderColor: 'skyblue',                // цвет рамки
-            },
-            '&:hover fieldset': {
-              borderColor: '#20b1e1',                // цвет рамки при ховере
-            },
-            '&.Mui-focused fieldset': {
-              borderColor: 'skyblue',                // цвет рамки при фокусе
-            },
-          },
-        }}
+        className={styles.input}
       />
 
       <Button
         variant="contained"
         color="primary"
         type="submit"
-        sx={{ marginTop: '16px' }}
-        disabled={loading} // отключаем кнопку во время загрузки
+        className={styles.submitButton}
+        disabled={loading}
       >
         {loading ? <CircularProgress size={24} /> : 'Отправить'}
       </Button>
@@ -162,10 +120,10 @@ export const Form = () => {
         }}
         message={success === "succeeded" ? "Данные успешно отправлены!" : error}
       />
-
     </Box>
   );
 };
+
 
 
 

@@ -6,15 +6,18 @@ import {
   CardContent,
   Container,
   Grid,
+  Modal,
   Pagination,
   Typography,
 } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './CategoryPage.module.scss';
 import { PageHeader } from './categoryPageHeader/PageHeader';
 import { useCategoryArticles } from './hook/useCategoryArticles';
+import { Form } from '../../form/Form';
+import { ModalForm } from '../../modal/ModalForm';
 
 export const CategoryPage: React.FC = () => {
   const {
@@ -27,14 +30,22 @@ export const CategoryPage: React.FC = () => {
     handlePageChange,
   } = useCategoryArticles(6);
 
+  const [openModal, setOpenModal] = useState(false);
+
   if (loading) return <Box textAlign="center" mt={4}><Typography>Загрузка...</Typography></Box>;
   if (error) return <Typography color="error" mt={4} textAlign="center">{error}</Typography>;
   if (!decodedCategory) return <Typography mt={4} textAlign="center">Категория не указана</Typography>;
   if (articles.length === 0) return <Typography mt={4} textAlign="center">Статьи не найдены</Typography>;
 
+  const handleOpenModal = () => setOpenModal(true);
+  const handleCloseModal = () => setOpenModal(false);
+
+
+
   return (
     <Container maxWidth="md" sx={{ maxWidth: '1280px' }}>
-      <PageHeader />
+      <PageHeader onHandleClick={handleOpenModal} articlePage={true}/>
+
 
       <Grid container spacing={3} sx={{ marginTop: '100px' }}>
         {articles.map(article => (
@@ -100,6 +111,8 @@ export const CategoryPage: React.FC = () => {
           />
         </Box>
       )}
+      {/* Модальное окно с формой */}
+      <ModalForm handleCloseModal={handleCloseModal} openModal={openModal} />
     </Container>
   );
 };

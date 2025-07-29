@@ -1,8 +1,10 @@
-import { Box, Button, Typography, IconButton, Menu, MenuItem } from "@mui/material";
+import { Box, Button, Typography, IconButton, Menu, MenuItem, Modal } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import { useCategoryArticles } from '../hook/useCategoryArticles';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { Form } from "../../../form/Form";
+
 
 type Props = {
   title?: string;
@@ -13,8 +15,9 @@ type Props = {
 export const PageHeader = ({ title, articlePage, onHandleClick }: Props) => {
   const { decodedCategory } = useCategoryArticles(6);
   const navigate = useNavigate();
-  
+
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
 
   const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -23,6 +26,7 @@ export const PageHeader = ({ title, articlePage, onHandleClick }: Props) => {
   const handleCloseMenu = () => {
     setAnchorEl(null);
   };
+
 
   const menuItems = [
     { text: 'Назад', action: () => navigate(-1) },
@@ -49,20 +53,35 @@ export const PageHeader = ({ title, articlePage, onHandleClick }: Props) => {
       }}
     >
       <Typography variant="h4" component="h1" sx={{
-        fontSize: { xs: '1.5rem', sm: '2rem' },
+        fontSize: { xs: '0.7rem', sm: '1.5rem' },
         color: 'white',
+        maxWidth: {xs: '230px', sm: '550px'}
       }}>
         {title ? title : `Статьи: ${decodedCategory}`}
       </Typography>
 
       {/* Бургер-меню */}
       {articlePage && (
-        <Box sx={{ display: { xs: 'block', sm: 'none' }, position: 'absolute', right: 16 }}>
-          <IconButton onClick={handleMenuClick} color="inherit">
+        <Box sx={{ display: 'flex', alignItems: 'center',justifyContent: 'space-between', position: 'absolute', gap: 2, right: 16 }}>
+          <Button
+            variant="contained"
+            onClick={onHandleClick}
+            size="small"
+            sx={{
+              display: { xs: 'inline-flex', sm: 'none' },  // Показываем только на xs, скрываем на sm+
+              maxWidth: '50px',
+              fontSize: '5px',
+            }}
+          >
+            Задать вопрос юристу
+          </Button>
+
+          <IconButton onClick={handleMenuClick} color="inherit" sx={{ display: { xs: 'inline-flex', sm: 'none' } }}>
             <MenuIcon />
           </IconButton>
         </Box>
       )}
+
 
       <Box
         sx={{
@@ -82,6 +101,8 @@ export const PageHeader = ({ title, articlePage, onHandleClick }: Props) => {
           На главную
         </Button>
       </Box>
+
+
 
       {/* Menu (выпадающее меню) */}
       <Menu

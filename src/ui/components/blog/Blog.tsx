@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../store/store';
 import { fetchArticles } from '../../../store/slice/fetchArticles';
 import Grid from '@mui/material/Grid';
@@ -9,6 +9,7 @@ import {
   Typography,
   Card,
   Button,
+  Modal,
 } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import people from '../../../assets/images/people.png';
@@ -16,6 +17,8 @@ import lawCompanies from '../../../assets/images/lawCompanies.jpg'
 import bankruptcyGeneral from '../../../assets/images/bankruptcyGeneral.png';
 import court from '../../../assets/images/court.png';
 import { PageHeader } from './categoryPage/categoryPageHeader/PageHeader';
+import { Form } from '../form/Form';
+import { ModalForm } from '../modal/ModalForm';
 
 export interface Article {
   id: string;
@@ -29,6 +32,10 @@ export const Blog: React.FC = () => {
   const { items: articles, loading, error, success, items, } = useAppSelector(state => state.article);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+    const [openModal, setOpenModal] = useState(false);
+
+    const handleOpenModal = () => setOpenModal(true);
+    const handleCloseModal = () => setOpenModal(false);
 
 
   useEffect(() => {
@@ -36,6 +43,8 @@ export const Blog: React.FC = () => {
       dispatch(fetchArticles());
     }
   }, [dispatch, success]);
+
+
   
 
   const categories = useMemo(() => {
@@ -68,7 +77,7 @@ export const Blog: React.FC = () => {
  
   return (
     <Container maxWidth="md" sx={{ mt: 4, marginTop: '100px' }}>
-      <PageHeader title='Разделы блога' articlePage={true}/>
+      <PageHeader title='Разделы блога' articlePage={true} onHandleClick={handleOpenModal}/>
 
       <Grid container spacing={2} marginTop={'60px'}>
         {categories.map((c, index: any) => {
@@ -124,6 +133,8 @@ export const Blog: React.FC = () => {
           );
         })}
       </Grid>
+      {/* Модальное окно с формой */}
+      <ModalForm handleCloseModal={handleCloseModal} openModal={openModal}/>
     </Container>
   );
 };

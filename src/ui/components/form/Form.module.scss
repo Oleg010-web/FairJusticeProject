@@ -1,0 +1,56 @@
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #708090;
+  color: #FAEBD7;
+  gap: 16px;
+  max-width: 400px;
+  margin: 50px auto 0 auto;
+  padding: 20px;
+  border: 1px solid #1976d2;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.input {
+  & label {
+    color: skyblue;
+  }
+  & label.Mui-focused {
+    color: skyblue;
+  }
+  & .MuiOutlinedInput-root {
+    color: #FAEBD7;
+    & fieldset {
+      border-color: skyblue;
+    }
+    &:hover fieldset {
+      border-color: #20b1e1;
+    }
+    &.Mui-focused fieldset {
+      border-color: skyblue;
+    }
+  }
+}
+
+.submitButton {
+  margin-top: 16px;
+}
+
+
+.closeButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: #FAEBD7;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+  }
+}
