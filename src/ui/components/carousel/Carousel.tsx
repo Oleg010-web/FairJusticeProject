@@ -29,7 +29,6 @@ export const CarouselItem: React.FC<CarouselItemProps> = ({
     speed: 1000,
     fade: true,
     dots: false,
-    dotsClass: styles.slickDotsCustom,
     pauseOnHover: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,

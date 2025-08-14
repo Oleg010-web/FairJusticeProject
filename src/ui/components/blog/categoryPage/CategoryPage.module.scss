@@ -1,9 +1,6 @@
 .card {
   width: 100%; /* или фиксированное значение, например 300px */
   height: 300px; /* фиксированная высота для всех карточек */
-  border: 2px solid #708090;
-  color: #FAEBD7;
-  background-color: transparent;
   overflow: hidden;
   position: relative;
   display: flex;

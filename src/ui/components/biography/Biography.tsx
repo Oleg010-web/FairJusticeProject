@@ -46,7 +46,7 @@ export const Biography: React.FC<BiographyProps> = ({
             images={images}
             width={isMobile ? mobileSliderWidth : sliderWidth}
             height={isMobile ? mobileSliderHeight : sliderHeight}
-            imgStyle={{ borderRadius: '12px', filter: 'brightness(0.9)' }}
+            imgStyle={{ filter: 'brightness(0.9)' }}
           />
         </Grid>
 
@@ -58,7 +58,7 @@ export const Biography: React.FC<BiographyProps> = ({
           <Typography
             variant="body1"
             className={styles.bioText}
-            sx={{ wordWrap: 'break-word', whiteSpace: 'normal', color: 'whitesmoke' }}
+            sx={{ wordWrap: 'break-word', whiteSpace: 'normal', }}
           >
             {bioText}
           </Typography>

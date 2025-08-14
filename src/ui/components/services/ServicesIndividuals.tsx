@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button, List, ListItem, ListItemText, Modal, Typography, Box } from '@mui/material';
 import style from './ServicesIndividuals.module.scss'
 import { Form } from '../form/Form';
+import { ModalForm } from '../modal/ModalForm';
 
 
 interface Service {
@@ -76,69 +77,14 @@ return (
         </List>
 
         {selectedService && (
-            <Modal
-                open={!!selectedService}
-                onClose={() => setSelectedService(null)}
-                aria-labelledby="service-description-title"
-                aria-describedby="service-description-description"
-            >
-                <Box sx={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    width: { xs: '60%', sm: '80%', md: 400 },
-                    bgcolor: 'background.paper',
-                    borderRadius: 2,
-                    boxShadow: 24,
-                    p: 4
-                }}>
-                    <Typography id="service-description-title" variant="h6" component="h2">
-                        {selectedService.title}
-                    </Typography>
-                    <Typography id="service-description-description" sx={{ mt: 2 }}>
-                        {selectedService.description}
-                    </Typography>
-                    <Button variant="contained" onClick={() => setSelectedService(null)} style={{ marginTop: '20px' }}>
-                        Закрыть
-                    </Button>
-                </Box>
-            </Modal>
+            <ModalForm handleCloseModal={handlePopupClose} openModal={openPopup}/>
         )}
 
         <Button variant="contained" onClick={handlePopupOpen} style={{ marginTop: '20px' }}>
             Задать вопрос
         </Button>
 
-      <Modal
-        open={openPopup}
-        onClose={handlePopupClose}
-        aria-labelledby="question-form-title"
-        aria-describedby="question-form-description"
-      >
-        <Box
-          sx={{
-            position: 'absolute' as const,
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            backgroundColor: '#b6d5f4',
-            boxShadow: 24,
-            p: 1,
-            maxWidth: 600,
-            width: '90%',
-            borderRadius: 2,
-            outline: 'none',
-          }}
-        >
-          <Form />
-          <Box mt={2} textAlign="right" padding={0}>
-            <Button variant="outlined" onClick={handlePopupClose}>
-              Закрыть
-            </Button>
-          </Box>
-        </Box>
-      </Modal>
+      <ModalForm handleCloseModal={handlePopupClose} openModal={openPopup}/>
     </div>
   )
 }

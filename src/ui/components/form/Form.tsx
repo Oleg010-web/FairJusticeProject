@@ -59,7 +59,7 @@ export const Form = ({ handleClose }: Props) => {
         </IconButton>
       </Box>
 
-      <Typography variant="h5" gutterBottom>
+      <Typography variant="h5" gutterBottom sx={{color: 'rgb(57, 98, 235)'}}>
         Задайте вопрос юристу
       </Typography>
 

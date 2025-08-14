@@ -65,6 +65,7 @@ export const PageHeader = ({ title, articlePage, onHandleClick }: Props) => {
         <Box sx={{ display: 'flex', alignItems: 'center',justifyContent: 'space-between', position: 'absolute', gap: 2, right: 16 }}>
           <Button
             variant="contained"
+            color="secondary"
             onClick={onHandleClick}
             size="small"
             sx={{

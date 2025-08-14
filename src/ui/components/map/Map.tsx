@@ -44,7 +44,7 @@ export const YandexMap = () => {
     }, []);
 
     return (
-        <Box component={Paper} elevation={3} sx={{ padding: 2, marginTop: '10px', backgroundColor: '#708090', border: 'none', color: '#FAEBD7' }}>
+        <Box  sx={{ padding: 2, marginTop: '10px', border: 'none', }}>
             <Typography variant="h5" component="h2" gutterBottom>
                 Наши контакты:
             </Typography>

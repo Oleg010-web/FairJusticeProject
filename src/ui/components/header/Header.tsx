@@ -13,19 +13,23 @@ import {
   Tooltip,
   Fade,
   Slide,
+  Switch,
 } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import AdbIcon from '@mui/icons-material/Adb';
 
 const pages = [
-  { label: 'Products', path: '/products' },
-  { label: 'Pricing', path: '/pricing' },
+  { label: 'Цены на услуги юриста', path: '/pricing' },
   { label: 'Юридический блог', path: '/blog' },
 ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-export const Header = () => {
+type Props = {
+  changeTheme: () => void
+}
+
+export const Header = ({changeTheme} : Props) => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -71,7 +75,7 @@ export const Header = () => {
           </Typography>
 
           {/* Меню для мобильных */}
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', alignItems: 'center' } }}>
             <IconButton
               size="large"
               aria-label="open navigation menu"
@@ -110,6 +114,7 @@ export const Header = () => {
                 </MenuItem>
               ))}
             </Menu>
+            <Switch onChange={changeTheme}/>
           </Box>
 
           {/* Логотип и название для мобильных */}
@@ -140,6 +145,7 @@ export const Header = () => {
 
           {/* Кнопки страниц и аватар для десктопа */}
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex', alignItems: 'center' } }}>
+             <Switch onChange={changeTheme}/>
             {pages.map((page) => (
               <Button
                 key={page.label}
@@ -164,59 +170,6 @@ export const Header = () => {
                 {page.label}
               </Button>
             ))}
-
-            <Tooltip title="Open settings">
-              <IconButton
-                onClick={handleOpenUserMenu}
-                sx={{
-                  p: 0,
-                  ml: 2,
-                  transition: 'transform 0.3s ease',
-                  '&:hover': {
-                    transform: 'scale(1.15)',
-                    animation: 'pulse 1.5s infinite',
-                  },
-                  '@keyframes pulse': {
-                    '0%': {
-                      boxShadow: '0 0 0 0 rgba(255, 255, 255, 0.7)',
-                    },
-                    '70%': {
-                      boxShadow: '0 0 0 10px rgba(255, 255, 255, 0)',
-                    },
-                    '100%': {
-                      boxShadow: '0 0 0 0 rgba(255, 255, 255, 0)',
-                    },
-                  },
-                }}
-              >
-                <Avatar alt="User Avatar" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar-user"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-              slots={{ transition: Slide }}
-              slotProps={{ transition: { direction: 'down' } }}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu} sx={{ typography: 'body1' }}>
-                  {setting}
-                </MenuItem>
-              ))}
-            </Menu>
           </Box>
         </Toolbar>
       </Container>

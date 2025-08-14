@@ -20,7 +20,7 @@ export const ModalForm = (
     <Modal
       open={openModal}
       onClose={handleCloseModal}
-      style={{  top: '25%'}}
+      style={{  top: '25%',}}
     >
       <Form handleClose={handleCloseModal} />
     </Modal>

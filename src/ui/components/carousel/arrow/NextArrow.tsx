@@ -14,7 +14,6 @@ export const NextArrow: React.FC<ArrowProps> = ({ className, style, onClick }) =
       style={{
         ...style,
         display: 'block', // обязательно
-        background: 'rgba(0,0,0,0.5)',
         borderRadius: '50%',
         padding: 10,
         position: 'absolute',

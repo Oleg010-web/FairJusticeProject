@@ -48,7 +48,7 @@ export const Services = () => {
     }, []);
 
     return (
-        <Box component={Paper} elevation={3} sx={{ padding: 2, marginTop: '10px', backgroundColor: 'transparent', border: '2px solid', borderColor: '#708090',}}>
+        <Box  sx={{ padding: 2, marginTop: '10px',}}>
             <Container style={{ padding: '70px' }}>
                 <Stack
                     direction={{ xs: "column", sm: "row" }} // Изменяем направление для мобильных и более крупных экранов

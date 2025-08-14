@@ -2,8 +2,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: #708090;
-  color: #FAEBD7;
+  background-color: white;
   gap: 16px;
   max-width: 400px;
   margin: 50px auto 0 auto;
@@ -15,21 +14,21 @@
 
 .input {
   & label {
-    color: skyblue;
+    color: rgb(57, 98, 235);
   }
   & label.Mui-focused {
-    color: skyblue;
+    color: rgb(57, 98, 235);
   }
   & .MuiOutlinedInput-root {
     color: #FAEBD7;
     & fieldset {
-      border-color: skyblue;
+      border-color: rgb(57, 98, 235);
     }
     &:hover fieldset {
       border-color: #20b1e1;
     }
     &.Mui-focused fieldset {
-      border-color: skyblue;
+      border-color: rgb(57, 98, 235);
     }
   }
 }
@@ -44,7 +43,6 @@
   top: 8px;
   right: 8px;
   color: #FAEBD7;
-  background: transparent;
   border: none;
   cursor: pointer;
   padding: 4px;

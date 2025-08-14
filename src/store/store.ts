@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import { formReducer } from './slice/formSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { articlesReducer } from './slice/fetchArticles';
+import { themeReducer } from './slice/themeSlice';
 
 
 const store = configureStore({
   reducer: {
     form: formReducer,
-    article: articlesReducer
+    article: articlesReducer,
+    theme: themeReducer
   },
 });
 

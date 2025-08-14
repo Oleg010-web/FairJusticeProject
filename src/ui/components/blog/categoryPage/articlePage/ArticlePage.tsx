@@ -62,8 +62,7 @@ export const ArticlePage: React.FC = () => {
           '& img': { maxWidth: '100%', height: 'auto', mb: 2 },
           '& p': { mb: 2 },
           whiteSpace: 'pre-line',
-          backgroundColor: 'transparent',
-          color: '#FAEBD7'
+          textAlign: 'left'
         }}
         dangerouslySetInnerHTML={{ __html: article.content }}
       />
