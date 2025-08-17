@@ -21,7 +21,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
     transition: 'transform 0.3s, border 0.3s', // Плавный переход
     '&:hover': {
         transform: 'scale(1.05)', // Увеличение размера
-        border: '2px solid purple', // Фиолетовая граница
+        border: '2px solid #1976d2', // Фиолетовая граница
     },
 }));
 
@@ -48,8 +48,8 @@ export const Services = () => {
     }, []);
 
     return (
-        <Box  sx={{ padding: 2, marginTop: '10px',}}>
-            <Container style={{ padding: '70px' }}>
+        <Box  sx={{ padding: 1}}>
+            <Container style={{ padding: '30px' }}>
                 <Stack
                     direction={{ xs: "column", sm: "row" }} // Изменяем направление для мобильных и более крупных экранов
                     spacing={12}

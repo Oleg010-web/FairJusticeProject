@@ -47,7 +47,7 @@ export const MyCard: React.FC<MyCardProps> = ({
     >
       <Box className={styles.imageContainer}>
         <img src={src} alt={alt} className={styles.image} />
-        <Typography className={styles.slogan}>{slogan}</Typography>
+        <Typography className={styles.slogan} sx={{fontSize: '1.5rem', fontWeight: '600'}}>{slogan}</Typography>
 
         {/* Дополнительный текст, появляется при клике */}
         <Typography
@@ -56,6 +56,7 @@ export const MyCard: React.FC<MyCardProps> = ({
             opacity: showDescription ? 1 : 0,
             pointerEvents: showDescription ? 'auto' : 'none',
             transition: 'opacity 0.3s ease',
+            
           }}
         >
           {description}

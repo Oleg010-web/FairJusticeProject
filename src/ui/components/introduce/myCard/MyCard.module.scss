@@ -5,7 +5,9 @@
 
 .imageContainer {
   position: relative;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .image {
@@ -18,16 +20,19 @@
 
 .slogan {
   margin-top: 8px;
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: 800;
+  font-size: 24px;
   text-align: center;
 }
 
 /* Дополнительное описание — изначально скрыто */
 .description {
-  position: absolute;
-  bottom: -60px; /* чуть ниже картинки и слогана */
-  left: 50%;
+  // position: absolute;
+  // bottom: -160px; 
+  // left: 50%;
+  position: relative;
+  left: 45%;
+  top: 15px;
   transform: translateX(-50%);
   width: 90%;
   background: rgba(255, 255, 255, 0.95);

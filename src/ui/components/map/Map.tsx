@@ -46,15 +46,15 @@ export const YandexMap = () => {
     return (
         <Box  sx={{ padding: 2, marginTop: '10px', border: 'none', }}>
             <Typography variant="h5" component="h2" gutterBottom>
-                Наши контакты:
+                Мои контакты:
             </Typography>
 
             <Box sx={{ textAlign: 'left', marginBottom: '20px' }}>
                 <Typography variant="body1" gutterBottom>
-                    <strong>Адрес:</strong> ул. Примерная, 123, г. Москва
+                    <strong>Адрес:</strong> г. Москва, ул. Земляной Вал, д.64, стр.2, оф.720
                 </Typography>
                 <Typography variant="body1" gutterBottom>
-                    <strong>Телефон:</strong> +7 (123) 456-78-90
+                    <strong>Телефон:</strong> +7 (985) 769-46-99
                 </Typography>
                 <Typography variant="body1" gutterBottom>
                     <strong>Режим работы:</strong> Пн - Пт: 09:00 - 18:00

@@ -64,12 +64,11 @@ export const CategoryPage: React.FC = () => {
                   sx={{ flexGrow: 1 }}
                 >
                   <CardContent sx={{ p: 0 }}>
-                    <Typography variant="h6" component="h2" gutterBottom>
+                    <Typography variant="h6" component="h2" gutterBottom sx={{color: 'white'}}>
                       {article.title}
                     </Typography>
-                    <Typography
+                    {/* <Typography
                       variant="body2"
-                      color="text.secondary"
                       sx={{
                         display: '-webkit-box',
                         WebkitLineClamp: 3,
@@ -80,7 +79,7 @@ export const CategoryPage: React.FC = () => {
                       }}
                     >
                       {article.content.replace(/<[^>]+>/g, '').slice(0, 300)}
-                    </Typography>
+                    </Typography> */}
                   </CardContent>
                 </CardActionArea>
                 <Button
