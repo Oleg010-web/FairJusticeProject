@@ -52,20 +52,35 @@ export const ArticlePage: React.FC = () => {
       <PageHeader onHandleClick={handleOpenModal} articlePage={true}/>
 
       {/* Заголовок статьи */}
-      <Typography variant="h3" component="h1" gutterBottom>
+      <Typography variant="h3" gutterBottom
+        
+      >
         {article.title}
       </Typography>
 
       {/* Контент статьи */}
       <Box
-        sx={{
-          '& img': { maxWidth: '100%', height: 'auto', mb: 2 },
-          '& p': { mb: 2 },
+         sx={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center', // Центрируем по горизонтали
+          '& img': {
+            maxWidth: '100%', // Адаптируем изображение по ширине
+            height: 'auto', // Высота будет устанавливаться автоматически
+            mb: 2,
+          },
+          '& p': {
+            mb: 2,
+            textAlign: 'center', // Центрируем текст
+          },
           whiteSpace: 'pre-line',
-          textAlign: 'left'
         }}
-        dangerouslySetInnerHTML={{ __html: article.content }}
-      />
+      >
+        {article.image && <img src={article.image} alt="picture" />}
+        <p style={{textAlign: 'left'}}>{article.content}</p>
+      </Box>
 
       {/* Модальное окно с формой */}
       <ModalForm handleCloseModal={handleCloseModal} openModal={openModal}/>

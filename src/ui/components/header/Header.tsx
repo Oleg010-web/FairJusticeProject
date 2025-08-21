@@ -18,6 +18,8 @@ import {
 import { Link as RouterLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import AdbIcon from '@mui/icons-material/Adb';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import TelegramIcon from '@mui/icons-material/Telegram';
 
 const pages = [
   { label: 'Цены на услуги юриста', path: '/pricing' },
@@ -29,7 +31,7 @@ type Props = {
   changeTheme: () => void
 }
 
-export const Header = ({changeTheme} : Props) => {
+export const Header = ({ changeTheme }: Props) => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -51,33 +53,46 @@ export const Header = ({changeTheme} : Props) => {
   return (
     <AppBar position="static" sx={{ backgroundColor: '#1976d2', boxShadow: 'none' }}>
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar disableGutters sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
           {/* Логотип и название для десктопа */}
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: 'white' }} />
           <Typography
-            variant="h6"
             noWrap
-            component="a"
-            href="#"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
               color: 'white',
               textDecoration: 'none',
               userSelect: 'none',
               cursor: 'pointer',
             }}
           >
-            LOGO
+            Юрист - В.И.Ивушкин
+          </Typography>
+          <Typography  gutterBottom sx={{maxWidth: '150px', width: '100%', margin: 'auto' }}>
+            +7 (985) 769-46-99{' '}
+            {/* Иконки мессенджеров */}
+            <IconButton
+              aria-label="WhatsApp"
+              onClick={() => window.open('https://api.whatsapp.com/send?phone=79857694699', '_blank')}
+              
+            >
+              <WhatsAppIcon sx={{fontSize:'20px'}}/>
+            </IconButton>
+            <IconButton
+              aria-label="Telegram"
+              onClick={() => window.open('https://t.me/your_username', '_blank')} // Замените "your_username" на ваш логин в Telegram
+            >
+              <TelegramIcon sx={{fontSize:'20px'}}/>
+            </IconButton>
           </Typography>
 
           {/* Меню для мобильных */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', alignItems: 'center' } }}>
             <IconButton
-              size="large"
+              size="small"
               aria-label="open navigation menu"
               aria-controls="menu-appbar"
               aria-haspopup="true"
@@ -114,30 +129,26 @@ export const Header = ({changeTheme} : Props) => {
                 </MenuItem>
               ))}
             </Menu>
-            <Switch onChange={changeTheme}/>
+            <Switch onChange={changeTheme} />
           </Box>
 
           {/* Логотип и название для мобильных */}
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color: 'white' }} />
           <Typography
-            variant="h5"
             noWrap
-            component="a"
-            href="#"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
               color: 'white',
               textDecoration: 'none',
               userSelect: 'none',
               cursor: 'pointer',
             }}
           >
-            LOGO
+            Юрист - В.И.Ивушкин
           </Typography>
 
           {/* Отступ для выравнивания */}
@@ -145,7 +156,7 @@ export const Header = ({changeTheme} : Props) => {
 
           {/* Кнопки страниц и аватар для десктопа */}
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex', alignItems: 'center' } }}>
-             <Switch onChange={changeTheme}/>
+            <Switch onChange={changeTheme} />
             {pages.map((page) => (
               <Button
                 key={page.label}

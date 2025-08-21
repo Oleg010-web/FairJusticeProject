@@ -1,9 +1,13 @@
 import React, { useEffect, useRef } from 'react';
-import { Box, Paper, Typography } from '@mui/material';
+import { Box, Typography, IconButton } from '@mui/material';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import TelegramIcon from '@mui/icons-material/Telegram';
 
 declare const ymaps: any;
+
 export const YandexMap = () => {
     const isMapInitialized = useRef(false); // Флаг для отслеживания инициализации карты
+
     useEffect(() => {
         const loadYandexMaps = () => {
             const script = document.createElement('script');
@@ -44,7 +48,7 @@ export const YandexMap = () => {
     }, []);
 
     return (
-        <Box  sx={{ padding: 2, marginTop: '10px', border: 'none', }}>
+        <Box sx={{ padding: 2, marginTop: '10px', border: 'none' }}>
             <Typography variant="h5" component="h2" gutterBottom>
                 Мои контакты:
             </Typography>
@@ -54,18 +58,30 @@ export const YandexMap = () => {
                     <strong>Адрес:</strong> г. Москва, ул. Земляной Вал, д.64, стр.2, оф.720
                 </Typography>
                 <Typography variant="body1" gutterBottom>
-                    <strong>Телефон:</strong> +7 (985) 769-46-99
+                    <strong>Телефон:</strong>{' '}
+                    +7 (985) 769-46-99{' '}
+                    {/* Иконки мессенджеров */}
+                    <IconButton 
+                        aria-label="WhatsApp" 
+                        onClick={() => window.open('https://api.whatsapp.com/send?phone=79857694699', '_blank')}
+                    >
+                        <WhatsAppIcon />
+                    </IconButton>
+                    <IconButton 
+                        aria-label="Telegram" 
+                        onClick={() => window.open('https://t.me/your_username', '_blank')} // Замените "your_username" на ваш логин в Telegram
+                    >
+                        <TelegramIcon />
+                    </IconButton>
                 </Typography>
                 <Typography variant="body1" gutterBottom>
                     <strong>Режим работы:</strong> Пн - Пт: 09:00 - 18:00
                 </Typography>
             </Box>
-            <Box
-                id="map"
-                sx={{ height: '400px', width: '100%' }}
-            />
-        </Box >
+            <Box id="map" sx={{ height: '400px', width: '100%' }} />
+        </Box>
     );
 };
+
 
 

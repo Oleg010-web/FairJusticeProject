@@ -1,65 +1,74 @@
+/* MyCard.module.scss */
+
 .cardContainer {
-  margin: 0 auto;
+  display: flex; /* Используем Flexbox для отображения карточек в ряд */
+  flex-wrap: wrap; /* Позволяем карточкам переходить на следующую строку при достижении границы */
+  justify-content: center; /* Центрируем карточки по горизонтали */
+}
+
+.myCard {
+  position: relative;
+  width: 100%; /* Ширина для мобильных устройств */
+  max-width: 300px; /* Ограничение максимальной ширины */
+  margin: 36px; /* Отступ между карточками */
+}
+
+.imageContainer {
+  position: relative;
   display: flex;
-  align-items: stretch;
-  max-width: 1280px;
-  padding: 20px;
-  justify-content: space-between; 
-  /* Уберите opacity: 0; */
-  transition: opacity 0.5s ease; 
-}
-
-.card {
-  max-width: 300px;
-  text-align: center;
-  opacity: 0; /* Скрываем карточки по умолчанию */
-  transform: translateX(100%);
-  transition: transform 0.5s ease; /* Анимация сдвига */
-  border: 2px solid transparent;
-  border-radius: 8px;
-  margin-bottom: 15px;
-
-  &:hover {
-    border: 2px solid #1976d2; /* Фиолетовая граница при наведении */
-  }
-}
-
-.card.visible {
-  opacity: 1; /* Полная непрозрачность, когда элемент видимый */
-}
-
-.card.visible-left {
-  transform: translateX(0%); /* Элемент сдвигается в исходное положение, если выдвинут слева */
-}
-
-.card.visible-right {
-  transform: translateX(0%); /* Элемент сдвигается в исходное положение, если выдвинут справа */
+  flex-direction: column;
+  align-items: center; /* Центрируем элементы внутри контейнера */
 }
 
 .image {
-  max-width: 100%;
-  width: 300px;
+  display: block;
+  width: 100%;
   height: 300px;
   border-radius: 8px;
-  animation: fadeIn 1s ease-in-out;
+  animation: fadeIn 1s ease-in-out; /* Анимация появления */
 }
+
+.slogan {
+  margin-top: 8px;
+  font-weight: 800;
+  font-size: 24px;
+  text-align: center;
+}
+
+.description {
+  position: relative;
+  left: 50%;
+  top: 15px;
+  transform: translateX(-50%); /* Центрируем текст описания */
+  width: 90%; /* Ширина описания */
+  background: rgba(255, 255, 255, 0.95);
+  padding: 8px 12px; /* Отступы для описания */
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  color: #222;
+  font-size: 0.9rem;
+  font-weight: 400;
+  opacity: 0; /* Изначально скрыто */
+  pointer-events: none; /* Отключаем взаимодействие */
+  transition: opacity 0.3s ease; /* Плавный переход для появления */
+  text-align: center;
+  z-index: 10; /* Поверх остальных элементов */
+}
+
+/* Появление описания по ховеру на контейнер картинки */
 
 @keyframes fadeIn {
   from {
-    opacity: 0;
+    opacity: 0; /* Начальная непрозрачность */
   }
   to {
-    opacity: 1;
+    opacity: 1; /* Конечная непрозрачность */
   }
 }
 
 @media (max-width: 768px) {
-  .cardContainer {
-    flex-direction: column; /* Располагаем карточки колонкой */
-  }
-
-  .image {
-    min-width: 100%; /* Каждая карточка будет занимать всю ширину */
-    height: auto; /* Автоматическая высота для поддержания пропорций изображения */
+  .myCard {
+    width: 100%; /* Каждая карточка занимает всю ширину */
+    margin: 16px 0; /* Отступ вертикально для мобильных устройств */
   }
 }
