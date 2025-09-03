@@ -33,7 +33,7 @@ export const Biography: React.FC<BiographyProps> = ({
         boxSizing: 'border-box',
       }}
     >
-      <Typography variant="h3" align="center" sx={{ fontSize: 30, marginBottom: 7 }}>
+      <Typography variant="h3" align="center" sx={{ marginBottom: 7 }}>
         Обо мне
       </Typography>
       <Grid

@@ -28,20 +28,23 @@ type Props = {
   changeTheme: () => void
 }
 
-export const HomePage = ({changeTheme} : Props) => {
+export const HomePage = ({ changeTheme }: Props) => {
 
 
   return (
-    <>
-        <Header changeTheme={changeTheme}/>
+    <Box>
+      <Header changeTheme={changeTheme} />
+      <Box sx={{ pt: '64px' }}>
         <CarouselItem images={[image1, image2, image3]} width={'100%'} height={'500px'} />
         <Card />
         <Services />
-        <Biography images={[avatar1, avatar2]} bioText='Владислав Сергеевич Ивушкин — опытный юрист с более чем 10-летним стажем.Специализируется на гражданском праве и процессе банкротва физических и юридических лиц.Любит помогать людям и решать сложные задачи.' sliderWidth={'350px'} sliderHeight={'350px'} />
+        <Biography images={[avatar1, avatar2]} bioText='Владислав Сергеевич Ивушкин — арбитражный управляющий с более чем 10-летним стажем.Специализируется на процессе банкротва физических и юридических лиц, а также на разных областях гражданского права. Любит помогать людям и решать сложные задачи.' sliderWidth={'350px'} sliderHeight={'350px'} />
         <Box sx={{ padding: 2, marginTop: '10px' }}>
           <Form />
         </Box>
         <YandexMap />
-    </>
+      </Box>
+
+    </Box>
   )
 }

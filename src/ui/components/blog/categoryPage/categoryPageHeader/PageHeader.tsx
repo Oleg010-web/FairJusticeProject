@@ -53,7 +53,6 @@ export const PageHeader = ({ title, articlePage, onHandleClick }: Props) => {
       }}
     >
       <Typography variant="h4" component="h1" sx={{
-        fontSize: { xs: '0.7rem', sm: '1.5rem' },
         color: 'white',
         maxWidth: {xs: '230px', sm: '550px'}
       }}>
@@ -71,7 +70,6 @@ export const PageHeader = ({ title, articlePage, onHandleClick }: Props) => {
             sx={{
               display: { xs: 'inline-flex', sm: 'none' },  // Показываем только на xs, скрываем на sm+
               maxWidth: '50px',
-              fontSize: '5px',
             }}
           >
             Задать вопрос юристу

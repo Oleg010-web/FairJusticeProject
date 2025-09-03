@@ -81,7 +81,7 @@ export const Blog: React.FC = () => {
 
   return (
     <Container maxWidth="md" sx={{ mt: 4, marginTop: '100px' }}>
-        <PageHeader title='Разделы блога' articlePage={true} onHandleClick={handleOpenModal} />
+        <PageHeader title='Разделы' articlePage={true} onHandleClick={handleOpenModal} />
 
         <Grid container spacing={2} marginTop={'60px'}>
           {categories.map((c, index: any) => {
@@ -125,7 +125,6 @@ export const Blog: React.FC = () => {
                       zIndex: 2,
                       color: 'white',
                       fontWeight: 'bold',
-                      fontSize: '1.5rem',
                       textAlign: 'center',
                       p: 2,
                     }}

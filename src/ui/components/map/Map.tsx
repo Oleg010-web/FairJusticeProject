@@ -63,7 +63,6 @@ export const YandexMap = () => {
                         component="a"
                         href="tel:+79857694699"
                         sx={{
-                            fontSize: { xs: '12px', sm: '14px', md: '16px' },
                             textAlign: 'center',
                             textDecoration: 'none', // Убираем подчеркивание
                             '&:hover': {
@@ -71,12 +70,10 @@ export const YandexMap = () => {
                             }
                         }}
                     >
-                        +7 (985) 769-46-99 
+                        +7 (985) 769-46-99
                     </Typography>
-                    {'  '},
-                    {/* +7 (985) 769-46-99, {' '} */}
-                    {/* Иконки мессенджеров */}
-                    <span>Напишите нам в </span>
+                    {'.  '} 
+                    <span> Напишите мне в </span>
                     <IconButton
                         aria-label="WhatsApp"
                         onClick={() => window.open('https://api.whatsapp.com/send?phone=79857694699', '_blank')}
@@ -86,7 +83,7 @@ export const YandexMap = () => {
                     <span>или в </span>
                     <IconButton
                         aria-label="Telegram"
-                        onClick={() => window.open('https://t.me/your_username', '_blank')} // Замените "your_username" на ваш логин в Telegram
+                        onClick={() => window.open('https://t.me/vivushkin', '_blank')}
                     >
                         <TelegramIcon color='primary' />
                     </IconButton>

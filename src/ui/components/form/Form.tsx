@@ -5,6 +5,7 @@ import { Box, TextField, Button, Typography, CircularProgress, Snackbar, IconBut
 import CloseIcon from '@mui/icons-material/Close';
 import { resetFormState, submitForm } from '../../../store/slice/formSlice';
 import { RootState, useAppDispatch } from '../../../store/store';
+import Parse from '../../../common/parseClient';
 import styles from './Form.module.scss';
 
 export interface FormValues {
@@ -27,8 +28,20 @@ export const Form = ({ handleClose }: Props) => {
     formState: { errors },
   } = useForm<FormValues>();
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+   const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    // Сначала диспатчим в Redux (если нужно сохранить в стейт)
     dispatch(submitForm(data));
+
+    // Затем отправляем уведомление в Telegram
+    try {
+      await Parse.Cloud.run('notifyTelegram', {
+        message: `Новая заявка: Имя - ${data.name}, Телефон - ${data.number}, Вопрос - ${data.task}`
+      });
+      console.log('Уведомление в Telegram отправлено успешно');
+    } catch (telegramError) {
+      console.error('Ошибка отправки в Telegram:', telegramError);
+      // Можно добавить дополнительную логику, например, показать ошибку пользователю
+    }
   };
 
 
@@ -47,7 +60,7 @@ export const Form = ({ handleClose }: Props) => {
       component="form"
       onSubmit={handleSubmit(onSubmit)}
       className={styles.form}
-      sx={{maxWidth: {xs: '300px', sm: '400px'}}}
+      sx={{ maxWidth: { xs: '300px', sm: '400px' } }}
     >
       <Box className={styles.closeButton}>
         <IconButton
@@ -59,7 +72,7 @@ export const Form = ({ handleClose }: Props) => {
         </IconButton>
       </Box>
 
-      <Typography variant="h5" gutterBottom sx={{color: 'rgb(57, 98, 235)'}}>
+      <Typography variant="h5" gutterBottom sx={{ color: 'rgb(57, 98, 235)' }}>
         Задайте вопрос юристу
       </Typography>
 

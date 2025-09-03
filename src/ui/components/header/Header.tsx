@@ -1,31 +1,27 @@
-import React from 'react';
+import AdbIcon from '@mui/icons-material/Adb';
+import MenuIcon from '@mui/icons-material/Menu';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import {
   AppBar,
-  Toolbar,
-  Typography,
+  Box,
+  Button,
+  Container,
+  Fade,
   IconButton,
   Menu,
   MenuItem,
-  Button,
-  Box,
-  Container,
-  Avatar,
-  Tooltip,
-  Fade,
-  Slide,
   Switch,
+  Toolbar,
+  Typography
 } from '@mui/material';
+import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import MenuIcon from '@mui/icons-material/Menu';
-import AdbIcon from '@mui/icons-material/Adb';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import TelegramIcon from '@mui/icons-material/Telegram';
 
 const pages = [
   { label: 'Цены на услуги юриста', path: '/pricing' },
-  { label: 'Юридический блог', path: '/blog' },
+  { label: 'Блог', path: '/blog' },
 ];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 type Props = {
   changeTheme: () => void
@@ -51,7 +47,19 @@ export const Header = ({ changeTheme }: Props) => {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#1976d2', boxShadow: 'none' }}>
+    <AppBar position="fixed"
+      sx={{
+        position: 'fixed',
+        top: 0,
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '1280px',
+        maxWidth: '100%',
+        backgroundColor: '#1976d2',
+        boxShadow: 'none',
+        height: 64,
+      }}
+    >
       <Container maxWidth='lg' sx={{ px: { xs: 1, sm: 2 } }}>
         <Toolbar disableGutters sx={{
           width: '100%',
@@ -97,7 +105,7 @@ export const Header = ({ changeTheme }: Props) => {
               </IconButton>
               <IconButton
                 aria-label="Telegram"
-                onClick={() => window.open('https://t.me/your_username', '_blank')}
+                onClick={() => window.open('https://t.me/vivushkin', '_blank')}
                 size="small"
                 sx={{ color: 'white' }}
               >
@@ -107,8 +115,7 @@ export const Header = ({ changeTheme }: Props) => {
           </Box>
 
           {/* Логотип и название для десктопа */}
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', mr: 2 }}>
-            <AdbIcon sx={{ mr: 1, color: 'white' }} />
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', mr: 1 }}>
             <Typography
               noWrap
               sx={{
@@ -117,10 +124,11 @@ export const Header = ({ changeTheme }: Props) => {
                 textDecoration: 'none',
                 userSelect: 'none',
                 cursor: 'pointer',
-                fontSize: { md: '1.1rem', lg: '1.25rem' }
+                fontSize: { md: '1.1rem', lg: '1.25rem' },
               }}
             >
-              Юрист - В.И.Ивушкин
+              <span>Арбитражный управляющий - {' '}</span>
+              <span> В.С.Ивушкин</span>
             </Typography>
           </Box>
 
@@ -140,8 +148,8 @@ export const Header = ({ changeTheme }: Props) => {
               lineHeight: '1.1'
             }}
           >
-            <span>Юрист</span>
-            <span>В.И.Ивушкин</span>
+            <span>Арбитражный управляющий</span>
+            <span>В.С.Ивушкин</span>
           </Typography>
 
           <Box sx={{

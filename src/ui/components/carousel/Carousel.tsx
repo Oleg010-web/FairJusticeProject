@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { NextArrow } from './arrow/NextArrow';
 import { PrevArrow } from './arrow/PrevArrow';
+import { Box } from '@mui/material';
 
 interface CarouselItemProps {
   images: string[];
@@ -42,7 +43,7 @@ export const CarouselItem: React.FC<CarouselItemProps> = ({
   };
 
   return (
-    <div style={sliderStyle} className={styles.carouselWrapper}>
+    <Box style={sliderStyle} className={styles.carouselWrapper}>
       <Slider {...settings} >
         {images.map((img, idx) => (
           <div key={idx}>
@@ -57,7 +58,7 @@ export const CarouselItem: React.FC<CarouselItemProps> = ({
           </div>
         ))}
       </Slider>
-    </div>
+    </Box>
   );
 };
 
