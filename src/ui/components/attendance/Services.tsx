@@ -6,8 +6,8 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { styled } from '@mui/material/styles';
-import client from '../../../assets/images/person.svg'
-import company from '../../../assets/images/forCompanys.svg'
+import client from '../../../assets/images/person.png'
+import company from '../../../assets/images/forCompanys.png'
 import styles from './Services.module.scss';
 import { Box, Paper } from '@mui/material';
 
@@ -64,10 +64,10 @@ export const Services = () => {
                             <CardMedia
                                 component="img"
                                 alt="Услуги для физических лиц"
-                                height="200"
+                                height="300"
                                 image={client} // Замените на реальный URL
                             />
-                            <Typography variant="h6" component="div">
+                            <Typography variant="h6">
                                 Услуги для физических лиц
                             </Typography>
                         </StyledCard>
@@ -80,7 +80,7 @@ export const Services = () => {
                             <CardMedia
                                 component="img"
                                 alt="Услуги для юридических лиц"
-                                height="200"
+                                height="300"
                                 image={company} // Замените на реальный URL
                             />
                             <Typography variant="h6" component="div">

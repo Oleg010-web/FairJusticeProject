@@ -19,7 +19,6 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 const pages = [
-  { label: 'Цены на услуги юриста', path: '/pricing' },
   { label: 'Блог', path: '/blog' },
 ];
 
