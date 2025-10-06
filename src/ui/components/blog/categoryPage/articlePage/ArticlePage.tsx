@@ -6,6 +6,8 @@ import { Form } from '../../../form/Form';
 import { PageHeader } from '../categoryPageHeader/PageHeader';
 import { ModalForm } from '../../../modal/ModalForm';
 import { fetchArticles } from '../../../../../store/slice/fetchArticles';
+import DOMPurify from 'dompurify';
+import './ArticlePage.css'
 
 export const ArticlePage: React.FC = () => {
   const loading = useAppSelector(state => state.article.loading);
@@ -15,7 +17,9 @@ export const ArticlePage: React.FC = () => {
   const navigate = useNavigate();
   const [openModal, setOpenModal] = useState(false);
 
-const article = useAppSelector(state => state.article.items.find(a => a.id === id));
+  const article = useAppSelector(state => state.article.items.find(a => a.id === id));
+  
+
   useEffect(() => {
     dispatch(fetchArticles());
   }, [dispatch]);
@@ -35,7 +39,7 @@ const article = useAppSelector(state => state.article.items.find(a => a.id === i
       </Container>
     );
   }
- 
+
   if (!article) {
     return (
       <Container sx={{ mt: 4 }}>
@@ -53,7 +57,8 @@ const article = useAppSelector(state => state.article.items.find(a => a.id === i
 
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
-  
+  const sanitizedContent = DOMPurify.sanitize(article.content);
+
   return (
     <Container maxWidth="md" sx={{ mt: "140px", mb: 8 }}>
       <PageHeader onHandleClick={handleOpenModal} articlePage={true} />
@@ -68,11 +73,6 @@ const article = useAppSelector(state => state.article.items.find(a => a.id === i
       {/* Контент статьи */}
       <Box
         sx={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center', // Центрируем по горизонтали
           '& img': {
             maxWidth: '100%', // Адаптируем изображение по ширине
             height: 'auto', // Высота будет устанавливаться автоматически
@@ -84,9 +84,13 @@ const article = useAppSelector(state => state.article.items.find(a => a.id === i
           },
           whiteSpace: 'pre-line',
         }}
+        className="article-container"
       >
         {article.image && <img src={article.image} alt="picture" />}
-        <p style={{ textAlign: 'left' }}>{article.content}</p>
+        <div className="article-content">
+          <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
+        </div>
+        
       </Box>
 
       {/* Модальное окно с формой */}

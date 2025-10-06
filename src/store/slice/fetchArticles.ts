@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import Parse from '../../common/parseClient';
+import { marked } from 'marked';
 
 // Типы статуса и ошибки, как в примере
 export type RequestStatus = "idle" | "loading" | "succeeded" | "failed";
@@ -74,7 +75,7 @@ export const fetchArticles = createAsyncThunk<Article[], void, { rejectValue: st
         id: article.id, // говорим TS, что id точно есть
         categories: article.get('categories'),
         title: article.get('title'),
-        content: article.get('content'),
+        content: article.get('content') ? marked(article.get('content'), { breaks: true }) : '',
         image: article.get('ArticleImage') ? article.get('ArticleImage').url() : null,
       }));
 
