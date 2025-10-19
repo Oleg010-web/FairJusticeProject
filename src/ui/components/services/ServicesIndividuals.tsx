@@ -1,6 +1,6 @@
 import { Button, List, ListItem, ListItemText, Typography } from '@mui/material';
 import { nanoid } from '@reduxjs/toolkit';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ModalForm } from '../modal/ModalForm';
 import { Header } from '../header/Header';
@@ -62,6 +62,12 @@ export const ServicesIndividuals = () => {
     navigate('/');
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);  
+
+
+
   return (
     <div style={{ padding: '20px' }}>
       <Header changeTheme={changeMode} />
@@ -112,9 +118,8 @@ export const ServicesIndividuals = () => {
       <Button variant="contained" onClick={handlePopupOpen} style={{ marginTop: '20px' }}>
         Задать вопрос
       </Button>
-
-      <ModalForm handleCloseModal={handlePopupClose} openModal={openPopup} />
       <YandexMap />
+      <ModalForm handleCloseModal={handlePopupClose} openModal={openPopup} />
     </div>
   )
 }

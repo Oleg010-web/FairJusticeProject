@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, List, ListItem, ListItemText, Modal, Typography, Box } from '@mui/material';
 import { Form } from '../../form/Form';
@@ -59,6 +59,10 @@ export const ServicesLegalEntities = () => {
   const handleBackClick = () => {
     navigate('/');
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);  // Сбрасывает скролл к верху
+  }, []);  // Только при первом монтировании
 
   return (
     <div style={{ padding: '20px' }}>
